@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+               http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<import resource="classpath:configs/dao-context.xml" />
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  <!-- Web-mvc jar -->
+		<property name="suffix" value=".jsp"></property>
+		<property name="prefix" value="/WEB-INF/views/"></property>
+	</bean>
+	
+	<context:component-scan base-package="com.shahin.web.app.Controllers"> </context:component-scan>
+	<mvc:annotation-driven></mvc:annotation-driven> <!-- its to understand the controller annotation and path -->
+	<context:annotation-config></context:annotation-config>
+	<mvc:resources location="/resources/*" mapping="/resources/**"></mvc:resources>
+	<!-- <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources> -->
+
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	
+	<property name="configLocation">
+		<value>classpath:hibernate.cfg.xml</value>
+	</property>
+	
+	<property name="configurationClass">
+		<value>org.hibernate.cfg.AnnotationConfiguration</value>
+	</property>
+	
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

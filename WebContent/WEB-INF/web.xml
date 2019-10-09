@@ -6,6 +6,26 @@
 	<display-name>WELCOME TO MY WEB APPLICATION</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
-
 	</welcome-file-list>
+
+	<!-- Servlet name should be the 1st landing page -->
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> <!-- Spring-webmvc jar -->
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>home</servlet-name> <!-- This is the one servlet name  and one jsp file for this servelet name exame page name is home then create file like home-servlet and home.jsp -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class><!-- spring-web jar -->
+	</listener>
+
+  <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/configs/dao-context.xml</param-value>  
+	</context-param>
+	 
 </web-app>
