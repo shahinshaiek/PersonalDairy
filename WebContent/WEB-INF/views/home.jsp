@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>HOME PAGE</title>
 
 <!--Diifrent ways to specify the css but it doesnt worked out me only include is worked for me  -->
 <%-- <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet"> --%>
@@ -41,7 +41,7 @@
 				<input type="password" class="form-control" placeholder="Password" id="inputPwdId">
 			</div>
             <div class="btn-and-text-div">
-			<button class="button button1">LogIn</button>
+			<button class="button button1">LOGIN</button>
 
 			<label class>Don't have account yet?</label>
 			<a href="${pageContext.request.contextPath}/signup">click here</a>
